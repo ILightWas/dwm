@@ -26,6 +26,7 @@
 //misc
 #define CENTER_PATCH 1
 #define NOBORDER_PATCH 1
+#define SCRATCHPADS_PATCH 1
 
 
 /* Bar functionality */
