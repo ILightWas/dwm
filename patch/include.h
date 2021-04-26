@@ -13,6 +13,7 @@
 #define CFACTS_PATCH 1
 #define VANITYGAPS_PATCH 1
 #define PERTAG_PATCH 1
+#define STACKER_PATCH 1
 
 //fullscreen
 #define FULLSCREEN_PATCH 1
