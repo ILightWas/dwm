@@ -14,6 +14,9 @@
 #define VANITYGAPS_PATCH 1
 #define PERTAG_PATCH 1
 #define STACKER_PATCH 1
+#define STICKY_PATCH 1
+#define SHIFTVIEW_PATCH 1
+
 
 //fullscreen
 #define FULLSCREEN_PATCH 1
@@ -39,3 +42,4 @@
 #include "bar_status2d.h"
 #include "bar_dwmblocks.h"
 #include "bar_statuscmd.h"
+#include "shiftview.h"

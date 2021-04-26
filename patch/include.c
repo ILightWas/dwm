@@ -7,3 +7,4 @@
 #include "bar_dwmblocks.c"
 #include "bar_statuscmd.c"
 #include "bar_awesomebar.c"
+#include "shiftview.c"
