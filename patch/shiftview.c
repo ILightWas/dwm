@@ -9,10 +9,10 @@ shiftview(const Arg *arg)
 	#endif // SCRATCHPADS_PATCH
 	if (arg->i > 0) // left circular shift
 		shifted.ui = (seltagset << arg->i)
-		   | (seltagset >> (NUMTAGS - arg->i));
+		   | (seltagset >> ((NUMTAGS - LENGTH(scratchpads)) - arg->i));
 	else // right circular shift
 		shifted.ui = seltagset >> -arg->i
-		   | seltagset << (NUMTAGS + arg->i);
+		   | seltagset << ((NUMTAGS - LENGTH(scratchpads)) + arg->i);
 
 	view(&shifted);
 }
