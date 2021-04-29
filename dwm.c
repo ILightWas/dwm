@@ -640,6 +640,7 @@ cleanupmon(Monitor *mon)
 		mon->bar = bar->next;
 		free(bar);
 	}
+	free(mon->pertag);
 	free(mon);
 }
 
