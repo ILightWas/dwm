@@ -62,10 +62,11 @@
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
 #define TRUNC(X,A,B)            (MAX((A), MIN((X), (B))))
 
-#define NUMTAGS					(LENGTH(tags) + LENGTH(scratchpads))
-#define TAGMASK     			((1 << NUMTAGS) - 1)
-#define SPTAG(i) 				((1 << LENGTH(tags)) << (i))
-#define SPTAGMASK   			(((1 << LENGTH(scratchpads))-1) << LENGTH(tags))
+#define NUMTAGS					(LENGTH(tags))
+#define TOTALTAGS               (NUMTAGS + LENGTH(scratchpads))
+#define TAGMASK     			((1 << TOTALTAGS) - 1)
+#define SPTAG(i) 				((1 << NUMTAGS) << (i))
+#define SPTAGMASK   			(((1 << LENGTH(scratchpads))-1) << NUMTAGS)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 
 #define OPAQUE                  0xffU
@@ -1083,7 +1084,7 @@ focusstack(const Arg *arg)
 	int i = stackpos(arg);
 	Client *c, *p;
 
-	if (!selmon->sel || selmon->sel->isfullscreen)
+	if (!selmon->sel || (selmon->sel->isfullscreen && !selmon->sel->fakefullscreen))
 		return;
 
 	for(p = NULL, c = selmon->clients; c && (i || !ISVISIBLE(c));
