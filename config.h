@@ -104,14 +104,20 @@ static const Layout layouts[] = {
 	{ "D[]",      deck },    				// 4
 	{ "TTT",      bstack },  				// 5
 	{ "===",      bstackhoriz },			// 6
-	{ "HHH",      grid },					// 7 -
-	{ "###",      nrowgrid },				// 8 -
-	{ "---",      horizgrid },				// 9 -
-	{ ":::",      gaplessgrid },			// 10 -
-	{ "|M|",      centeredmaster },			// 11 -
-	{ ">M>",      centeredfloatingmaster }, // 12 -
+	{ "HHH",      grid },					// 7
+	{ "###",      nrowgrid },				// 8
+	{ "---",      horizgrid },				// 9 
+	{ ":::",      gaplessgrid },			// 10 
+	{ "|M|",      centeredmaster },			// 11 
+	{ ">M>",      centeredfloatingmaster }, // 12 
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
+};
+
+enum AvailLayouts {
+	ltile, lmonocle, lspiral, ldwindle, ldeck,
+	lbstack, lbstackhoriz, lgrid, lnrowgrid, lhorizgrid,
+	lgaplessgrid, lcmaster, lcfmaster, lfloating
 };
 
 /* key definitions */
@@ -191,19 +197,23 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    			XK_KP_Insert,	defaultgaps,    {0} },
 
 	// layouts
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ControlMask,           XK_t,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY|ControlMask,           XK_g,      setlayout,      {.v = &layouts[5]} },
-	{ MODKEY|ShiftMask,             XK_i,      setlayout,      {.v = &layouts[6]} },
-	{ MODKEY|ControlMask,           XK_m,      setlayout,      {.v = &layouts[7]} },
-	{ MODKEY,			            XK_o,      setlayout,      {.v = &layouts[8]} },
-	{ MODKEY|ShiftMask,	            XK_o,      setlayout,      {.v = &layouts[9]} },
-	{ MODKEY|ControlMask,	        XK_o,      setlayout,      {.v = &layouts[10]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[11]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[12]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[ltile]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[lspiral]} },
+	{ MODKEY|ControlMask,           XK_t,      setlayout,      {.v = &layouts[ldwindle]} },
+
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[lmonocle]} },
+	{ MODKEY|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[lgaplessgrid]} },
+	{ MODKEY|ControlMask,           XK_u,      setlayout,      {.v = &layouts[lnrowgrid]} },
+
+	{ MODKEY,			            XK_o,      setlayout,      {.v = &layouts[lbstack]} },
+	{ MODKEY|ShiftMask,	            XK_o,      setlayout,      {.v = &layouts[lbstackhoriz]} },
+	{ MODKEY|ControlMask,	        XK_o,      setlayout,      {.v = &layouts[ldeck]} },
+
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[lcmaster]} },
+	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[lcfmaster]} },
+	{ MODKEY|ControlMask,           XK_m,      setlayout,      {.v = &layouts[lfloating]} },
+
+	//{ MODKEY|ShiftMask,             XK_i,      setlayout,      {.v = &layouts[6]} },
 
 
 
