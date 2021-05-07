@@ -13,6 +13,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char statussep         = ';';      /* separator between status bars */
 static const char *fonts[]          = { "dwmfont:size=10:antialias=true:hinting=true:hintstyle=hintslight" };
 static const char dmenufont[]       = "dmenufont:size=10:antialias=true:hinting=true:hintstyle=hintslight";
+
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -20,13 +21,22 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char col_red[]         = "#991111";
 static const char col_purple[]      = "#46357C"; //gentoo forum purple
+
+static char normfgcolor[]           = "#bbbbbb";
+static char normbgcolor[]           = "#222222";
+static char normbordercolor[]       = "#46357C";
+static char selfgcolor[]        	= "#eeeeee";
+static char selbgcolor[]    		= "#46357C"; 
+static char selbordercolor[] 		= "#991111";
+
+static char *colors[][3] = {
+       /*               fg           bg           border   */
+       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+ };
+
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_purple },
-	[SchemeSel]  = { col_gray4, col_purple,  col_red  },
-};
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { OPAQUE, OPAQUE, borderalpha },
@@ -142,7 +152,7 @@ enum AvailLayouts {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_purple, "-sf", col_gray3, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
@@ -251,6 +261,7 @@ static Key keys[] = {
 
 	{ MODKEY,                       XK_Print,      			 spawn,   SHCMD("printscreen.sh") },
 	{ MODKEY,             			XK_F5, 					 spawn,   SHCMD("firefox") 		  },
+	{ MODKEY|ShiftMask,				XK_F9,	         		 xrdb,    {.v = NULL } },
 
 
 	#define SPOTIFY_CTL "playerctl -p spotify"

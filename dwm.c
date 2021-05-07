@@ -2707,6 +2707,10 @@ main(int argc, char *argv[])
 	if (!(dpy = XOpenDisplay(NULL)))
 		die("dwm: cannot open display");
 	checkotherwm();
+	#if XRDB_PATCH && !BAR_VTCOLORS_PATCH
+	XrmInitialize();
+	loadxrdb();
+	#endif // XRDB_PATCH && !BAR_VTCOLORS_PATCH
 	setup();
 #ifdef __OpenBSD__
 	if (pledge("stdio rpath proc exec", NULL) == -1)

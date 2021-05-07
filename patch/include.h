@@ -4,6 +4,7 @@
 #define BAR_AWESOMEBAR_PATCH 1
 #define BAR_CENTEREDWINDOWNAME_PATCH 1
 #define BAR_STATUS2D_PATCH 1
+#define BAR_STATUS2D_XRDB_TERMCOLORS_PATCH 1
 #define BAR_STATUSCMD_PATCH 1
 #define BAR_DWMBLOCKS_PATCH 1
 #define BAR_EXTRASTATUS_PATCH 1
@@ -31,6 +32,7 @@
 #define CENTER_PATCH 1
 #define NOBORDER_PATCH 1
 #define SCRATCHPADS_PATCH 1
+#define XRDB_PATCH 1
 
 
 /* Bar functionality */
@@ -43,3 +45,4 @@
 #include "bar_dwmblocks.h"
 #include "bar_statuscmd.h"
 #include "shiftview.h"
+#include "xrdb.h"

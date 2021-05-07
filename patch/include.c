@@ -8,3 +8,4 @@
 #include "bar_statuscmd.c"
 #include "bar_awesomebar.c"
 #include "shiftview.c"
+#include "xrdb.c"
