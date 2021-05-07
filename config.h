@@ -71,7 +71,10 @@ static const Rule rules[] = {
 	{ "Google-chrome",NULL,     NULL,       1 << 7,       	0,           0,          	-1 },
 	{ "discord",  NULL,      	NULL,       1 << 2,       	0,           0,				-1 },
 	{ "Spotify",  NULL,  		NULL,      	1 << 3,       	0,           0,				-1 },
-	{ "Steam",    NULL,       	NULL,       1 << 4,       	0,           0,				-1 },
+	{ "Steam",    NULL,       	NULL,       1 << 5,       	0,           0,				-1 },
+	{ "VSCodium", NULL,       	"dwm",      1 << 1,       	0,           0,				-1 },
+	{ "VSCodium", NULL,       	"ilightwas",1 << 4,       	0,           0,				-1 },
+	{ "VSCodium", NULL,       	"- st -",	1 << 4,       	0,           0,				-1 },
 	{ NULL,		  "spterm",		NULL,	  	SPTAG(0), 		1,			 1,			 	-1 },
 	{ NULL,		  "spfm",		NULL,	  	SPTAG(1),		1,			 1,			 	-1 },
 	{ NULL,		  "pulsemixer",	NULL,	  	SPTAG(2),		1,			 1,			 	-1 }
