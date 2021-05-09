@@ -272,6 +272,7 @@ static void run(void);
 static void scan(void);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
+static void setcentered(const Arg *arg);
 static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
@@ -1707,6 +1708,16 @@ sendmon(Client *c, Monitor *m)
 	attachstack(c);
 	focus(NULL);
 	arrange(NULL);
+}
+
+void
+setcentered(const Arg *arg)
+{
+    Client *c = selmon->sel;
+    if (!c || !c->isfloating)
+        return;
+    resize(c, c->mon->wx + (c->mon->ww - WIDTH(c)) / 2, c->mon->wy + (c->mon->wh - HEIGHT(c)) / 2, c->w, c->h, 1);
+	XSync(dpy, True);
 }
 
 void
