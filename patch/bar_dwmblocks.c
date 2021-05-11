@@ -34,7 +34,18 @@ sigdwmblocks(const Arg *arg)
 		return;
 	if ((dwmblockspid = getdwmblockspid()) <= 0)
 		return;
-
+	
+	#if BAR_DWMBLOCKS_SIGUSR1_PATCH
+	sv.sival_int = (dwmblockssig << 8) | arg->i;
+	if (sigqueue(dwmblockspid, SIGUSR1, sv) == -1) {
+		if (errno == ESRCH) {
+			if (!getdwmblockspid())
+				sigqueue(dwmblockspid, SIGUSR1, sv);
+		}
+	}
+	#else
 	sv.sival_int = arg->i;
 	sigqueue(dwmblockspid, SIGRTMIN+dwmblockssig, sv);
+	#endif // BAR_DWMBLOCKS_SIGUSR1_PATCH
+
 }
