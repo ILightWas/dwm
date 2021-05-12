@@ -48,14 +48,17 @@ typedef struct {
 	const void *cmd;
 } Sp;
 
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "144x41", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"st", "-n", "pulsemixer", "-e", "pulsemixer", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm1", 		"-g", "127x31", NULL };
+const char *spcmd2[] = {"st", "-n", "spterm2",		"-g", "127x31", NULL };
+const char *spcmd3[] = {"st", "-n", "spfm",			"-g", "173x31", "-e", "ranger", NULL };
+const char *spcmd4[] = {"st", "-n", "sppulsemixer",	"-g", "107x23", "-e", "pulsemixer", NULL };
+
 static Sp scratchpads[] = {
-	/* name          cmd  */
-	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
-	{"pulsemixer",  spcmd3},
+	/* name         	cmd  */
+	{"spterm1",      	spcmd1},
+	{"spterm2",      	spcmd2},
+	{"spranger",		spcmd3},
+	{"sppulsemixer",  	spcmd4},
 };
 
 /* tagging */
@@ -65,19 +68,20 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    	title       tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",     NULL,       	NULL,       0,            	0,           1,          	-1 },
-	{ "Firefox",  NULL,       	NULL,       1 << 8,       	0,           0,          	-1 },
-	{ "Google-chrome",NULL,     NULL,       1 << 7,       	0,           0,          	-1 },
-	{ "discord",  NULL,      	NULL,       1 << 2,       	0,           0,				-1 },
-	{ "Spotify",  NULL,  		NULL,      	1 << 3,       	0,           0,				-1 },
-	{ "Steam",    NULL,       	NULL,       1 << 5,       	0,           0,				-1 },
-	{ "VSCodium", NULL,       	"dwm",      1 << 1,       	0,           0,				-1 },
-	{ "VSCodium", NULL,       	"ilightwas",1 << 4,       	0,           0,				-1 },
-	{ "VSCodium", NULL,       	"- st -",	1 << 4,       	0,           0,				-1 },
-	{ NULL,		  "spterm",		NULL,	  	SPTAG(0), 		1,			 1,			 	-1 },
-	{ NULL,		  "spfm",		NULL,	  	SPTAG(1),		1,			 1,			 	-1 },
-	{ NULL,		  "pulsemixer",	NULL,	  	SPTAG(2),		1,			 1,			 	-1 }
+	/* class      		instance		title       	tags mask	iscentered   isfloating		monitor */
+	{ "Gimp",     		NULL,       	NULL,       	0,            	0,           1,          	-1 },
+	{ "Firefox",  		NULL,       	NULL,       	1 << 8,       	0,           0,          	-1 },
+	{ "Google-chrome",	NULL,     		NULL,       	1 << 7,       	0,           0,          	-1 },
+	{ "discord",  		NULL,      		NULL,       	1 << 2,       	0,           0,				-1 },
+	{ "Spotify",  		NULL,  			NULL,      		1 << 3,       	0,           0,				-1 },
+	{ "Steam",    		NULL,       	NULL,       	1 << 5,       	0,           0,				-1 },
+	{ "VSCodium", 		NULL,       	"dwm",      	1 << 1,       	0,           0,				-1 },
+	{ "VSCodium", 		NULL,       	"ilightwas",	1 << 4,       	0,           0,				-1 },
+	{ "VSCodium", 		NULL,       	"- st -",		1 << 4,       	0,           0,				-1 },
+	{ NULL,		  		"spterm1",		NULL,	  		SPTAG(0), 		1,			 1,			 	-1 },
+	{ NULL,		  		"spterm2",		NULL,	  		SPTAG(1), 		1,			 1,			 	-1 },
+	{ NULL,		  		"spfm",			NULL,	  		SPTAG(2),		1,			 1,			 	-1 },
+	{ NULL,		  		"sppulsemixer",	NULL,			SPTAG(3),		1,			 1,			 	-1 }
 };
 
 /* Bar rules allow you to configure what is shown where on the bar, as well as
@@ -248,8 +252,9 @@ static Key keys[] = {
 
 	// Scratchpads
 	{ MODKEY,            			XK_n,  	   togglescratch,  {.ui = 0 } },
-	{ MODKEY,            			XK_e,	   togglescratch,  {.ui = 1 } },
-	{ MODKEY,            			XK_v,	   togglescratch,  {.ui = 2 } },
+	{ MODKEY|ShiftMask,				XK_n,  	   togglescratch,  {.ui = 1 } },
+	{ MODKEY,            			XK_e,	   togglescratch,  {.ui = 2 } },
+	{ MODKEY,            			XK_v,	   togglescratch,  {.ui = 3 } },
 	
 	// tags
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
