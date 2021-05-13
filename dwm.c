@@ -1714,10 +1714,12 @@ void
 setcentered(const Arg *arg)
 {
     Client *c = selmon->sel;
-    if (!c || !c->isfloating)
+	if (!c || (!c->isfloating && c->mon->lt[c->mon->sellt]->arrange))
         return;
     resize(c, c->mon->wx + (c->mon->ww - WIDTH(c)) / 2, c->mon->wy + (c->mon->wh - HEIGHT(c)) / 2, c->w, c->h, 1);
-	XSync(dpy, True);
+	// XRaiseWindow(dpy, c->win);
+	XEvent xev;
+	while (XCheckMaskEvent(dpy, EnterWindowMask, &xev));
 }
 
 void
