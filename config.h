@@ -12,8 +12,14 @@ static       int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char statussep         = ';';      /* separator between status bars */
-static const char *fonts[]          = { "dwmfont:size=10:antialias=true:hinting=true:hintstyle=hintslight" };
-static const char dmenufont[]       = "dmenufont:size=10:antialias=true:hinting=true:hintstyle=hintslight";
+static const char *fonts[]          = { 
+	"JetBrainsMonoNL Nerd Font:size=10:antialias=true:hinting=true:hintstyle=hintslight",
+	"Noto Sans Mono:size10:antialias=true:hinting=true:hintstyle=hintslight",
+	"Noto Color Emoji:size10:antialias=true:hinting=true:hintstyle=hintslight",
+	"Font Awesome 5 Free:size=10:antialias=true:hinting=true:hintstyle=hintslight",
+	"Font Awesome 5 Free Brands:size=10:antialias=true:hinting=true:hintstyle=hintslight",
+	"Font Awesome 5 Free Solid:size=10:antialias=true:hinting=true:hintstyle=hintslight", };
+static const char dmenufont[]       = "JetBrainsMonoNL Nerd Font:size=10:antialias=true:hinting=true:hintstyle=hintslight";
 
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
