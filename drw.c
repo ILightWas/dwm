@@ -5,6 +5,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xft/Xft.h>
 
+#include "patches.h"
 #include "drw.h"
 #include "util.h"
 
@@ -150,7 +151,7 @@ xfont_create(Drw *drw, const char *fontname, FcPattern *fontpattern)
 		return NULL;
 	}
 	#endif // BAR_COLOR_EMOJI_PATCH
-	
+
 	font = ecalloc(1, sizeof(Fnt));
 	font->xfont = xfont;
 	font->pattern = pattern;
