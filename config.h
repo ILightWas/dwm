@@ -85,6 +85,8 @@ static const Rule rules[] = {
 	{ "VSCodium", 		NULL,       	"dwm",      	1 << 1,       	0,           0,				-1 },
 	{ "VSCodium", 		NULL,       	"ilightwas",	1 << 4,       	0,           0,				-1 },
 	{ "VSCodium", 		NULL,       	"- st -",		1 << 4,       	0,           0,				-1 },
+	{ "MultiMC5", 		NULL,       	NULL,			1 << 5,       	0,           0,				-1 },
+	{ "Minecraft* 1", 	NULL,       	NULL,			1 << 5,       	0,           0,				-1 },
 	{ NULL,		  		"spterm1",		NULL,	  		SPTAG(0), 		1,			 1,			 	-1 },
 	{ NULL,		  		"spterm2",		NULL,	  		SPTAG(1), 		1,			 1,			 	-1 },
 	{ NULL,		  		"spfm",			NULL,	  		SPTAG(2),		1,			 1,			 	-1 },
