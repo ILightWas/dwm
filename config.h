@@ -59,6 +59,8 @@ const char *spcmd1[] = {"st", "-n", "spterm1", 		"-g", "127x31", NULL };
 const char *spcmd2[] = {"st", "-n", "spterm2",		"-g", "127x31", NULL };
 const char *spcmd3[] = {"st", "-n", "spfm",			"-g", "173x31", "-e", "ranger", NULL };
 const char *spcmd4[] = {"st", "-n", "sppulsemixer",	"-g", "107x23", "-e", "pulsemixer", NULL };
+const char *spcmd5[] = {"pavucontrol",	"--name=spPavucontrol",	NULL };
+
 
 static Sp scratchpads[] = {
 	/* name         	cmd  */
@@ -66,6 +68,8 @@ static Sp scratchpads[] = {
 	{"spterm2",      	spcmd2},
 	{"spranger",		spcmd3},
 	{"sppulsemixer",  	spcmd4},
+	{"spPavucontrol",  	spcmd5},
+
 };
 
 /* tagging */
@@ -90,7 +94,8 @@ static const Rule rules[] = {
 	{ NULL,		  		"spterm1",		NULL,	  		SPTAG(0), 		1,			 1,			 	-1 },
 	{ NULL,		  		"spterm2",		NULL,	  		SPTAG(1), 		1,			 1,			 	-1 },
 	{ NULL,		  		"spfm",			NULL,	  		SPTAG(2),		1,			 1,			 	-1 },
-	{ NULL,		  		"sppulsemixer",	NULL,			SPTAG(3),		1,			 1,			 	-1 }
+	{ NULL,		  		"sppulsemixer",	NULL,			SPTAG(3),		1,			 1,			 	-1 },
+	{ NULL,		  		"spPavucontrol",NULL,	  		SPTAG(4),		1,			 1,			 	-1 },
 };
 
 /* Bar rules allow you to configure what is shown where on the bar, as well as
@@ -264,6 +269,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_n,  	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,            			XK_e,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY,            			XK_v,	   togglescratch,  {.ui = 3 } },
+	{ MODKEY|ShiftMask,        		XK_v,	   togglescratch,  {.ui = 4 } },
 	
 	// tags
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
